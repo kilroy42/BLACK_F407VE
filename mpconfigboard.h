@@ -5,7 +5,7 @@
 
 #define MICROPY_HW_HAS_SWITCH       (1)		// has 2 buttons KEY0=PE4, KEY1=PE3
 #define MICROPY_HW_HAS_FLASH        (1)
-#define MICROPY_HW_HAS_SDCARD       (0)		// it has a sd scard, but i am not sure what the detect pin is, yet
+#define MICROPY_HW_HAS_SDCARD       (1)		// it has a sd card slot, but no detect pin wired. I take PE02 for it, pull it low to signal SD card present, let it floating to disable SD card
 #define MICROPY_HW_ENABLE_RNG       (1)
 #define MICROPY_HW_ENABLE_RTC       (1)
 #define MICROPY_HW_ENABLE_DAC       (1)
@@ -121,9 +121,9 @@
 #define MICROPY_HW_LED_OFF(pin)     (mp_hal_pin_high(pin))
 
 // SD card detect switch
-//	#define MICROPY_HW_SDCARD_DETECT_PIN        (pin_A8)	// nope
-//	#define MICROPY_HW_SDCARD_DETECT_PULL       (GPIO_PULLUP)
-//	#define MICROPY_HW_SDCARD_DETECT_PRESENT    (GPIO_PIN_RESET)
+#define MICROPY_HW_SDCARD_DETECT_PIN        (pin_E2)	// just take this
+#define MICROPY_HW_SDCARD_DETECT_PULL       (GPIO_PULLUP)
+#define MICROPY_HW_SDCARD_DETECT_PRESENT    (GPIO_PIN_RESET)
 // 1      - PC10 - DAT2/RES
 // 2      - PC11 - CD/DAT3/CS
 // 3      - PD2  - CMD/DI
